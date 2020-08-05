@@ -10,7 +10,6 @@ C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\VisioForge.Shared.dll
 C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\VisioForge.Tools.dll
 C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\VisioForge.Types.dll
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.csprojAssemblyReference.cache
-C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.Form1.resources
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.Properties.Resources.resources
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.csproj.GenerateResource.cache
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.csproj.CopyComplete
@@ -32,3 +31,4 @@ C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\Accord.xml
 C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\Accord.Video.xml
 C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\Accord.Video.FFMPEG.xml
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.csproj.CoreCompileInputs.cache
+C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.Screen.resources
