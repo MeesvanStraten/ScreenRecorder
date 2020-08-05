@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace ScreenRecorder
         Graphics graphics;
         string filename = "";
         string path = "H://Capture/";
+        string saveFileDir = "";
         
        
         public Form1()
@@ -28,10 +30,21 @@ namespace ScreenRecorder
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            path += filename + ".mp4";
-            videoFileWriter = new VideoFileWriter();
-            videoFileWriter.Open(path, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 10,VideoCodec.Default,1000000);
-            timer1.Start();
+            saveFileDir = path + filename + ".mp4";
+
+            if (fileExists(saveFileDir))
+            {
+                MessageBox.Show("Filename already exists!");
+            }
+            else
+            {
+                 videoFileWriter = new VideoFileWriter();
+                 videoFileWriter.Open(saveFileDir, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 10, VideoCodec.Default, 1000000);
+                 timer1.Start();
+                
+                MessageBox.Show("File succes!");
+            }
+            
           
 
         }
@@ -70,6 +83,18 @@ namespace ScreenRecorder
             pictureBox1.Image = img;
 
             videoFileWriter.WriteVideoFrame(img);
+        }
+
+        public bool fileExists(string file)
+        {
+            if (File.Exists(file))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
