@@ -21,7 +21,9 @@ namespace ScreenRecorder
         string filename = "";
         string path = "H://Capture/";
         string saveFileDir = "";
-        
+
+        //FOR TESTING ONLY
+        string selectedfolder = "";
        
         public Form1()
         {
@@ -30,19 +32,19 @@ namespace ScreenRecorder
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            saveFileDir = path + filename + ".mp4";
+            // Old fileDIR without picking path
+            //saveFileDir = path + filename + ".mp4";
 
+            saveFileDir = selectedfolder + "/" + filename + ".mp4";
             if (fileExists(saveFileDir))
             {
-                MessageBox.Show("Filename already exists!");
+                MessageBox.Show("Filename already exists!, Choose a diffrent name");
             }
             else
             {
                  videoFileWriter = new VideoFileWriter();
                  videoFileWriter.Open(saveFileDir, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 10, VideoCodec.Default, 1000000);
                  timer1.Start();
-                
-                MessageBox.Show("File succes!");
             }
             
           
@@ -95,6 +97,19 @@ namespace ScreenRecorder
             {
                 return false;
             }
+        }
+
+        private void btnFolderPicker_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //fbd.Description = "Custom Description"; //not mandatory
+
+            if (fbd.ShowDialog() == DialogResult.OK)
+                selectedfolder = fbd.SelectedPath;
+            else
+                selectedfolder = string.Empty;
+
+            MessageBox.Show(selectedfolder.ToString());
         }
     }
 }
