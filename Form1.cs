@@ -57,7 +57,7 @@ namespace ScreenRecorder
                 stopwatch.Start();
                 timer1.Start();
                 videoFileWriter = new VideoFileWriter();
-                videoFileWriter.Open(saveFileDir, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height, 10, VideoCodec.Default, 1000000);
+                videoFileWriter.Open(saveFileDir, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height, 1, VideoCodec.Default, 1000000);
             }
             
           
@@ -68,6 +68,7 @@ namespace ScreenRecorder
         {
             timer1.Stop();
             stopwatch.Stop();
+            stopwatch.Reset();
             videoFileWriter.Close();
         }
 
@@ -132,7 +133,7 @@ namespace ScreenRecorder
         private void btnFolderPicker_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //fbd.Description = "Custom Description"; //not mandatory
+            fbd.Description = "Select folder to save video";
 
             if (fbd.ShowDialog() == DialogResult.OK)
                 selectedfolder = fbd.SelectedPath;
@@ -140,31 +141,6 @@ namespace ScreenRecorder
                 selectedfolder = string.Empty;
 
             MessageBox.Show(selectedfolder.ToString());
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
