@@ -127,9 +127,9 @@
             this.lblTime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTime.Location = new System.Drawing.Point(16, 154);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(72, 24);
+            this.lblTime.Size = new System.Drawing.Size(65, 24);
             this.lblTime.TabIndex = 10;
-            this.lblTime.Text = "lblTime";
+            this.lblTime.Text = "0:0:0:0";
             // 
             // panel4
             // 
