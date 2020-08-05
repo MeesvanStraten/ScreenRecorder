@@ -13,7 +13,7 @@ using VisioForge.Shared.MediaFoundation.OPM;
 
 namespace ScreenRecorder
 {
-    public partial class Form1 : Form
+    public partial class Screen : Form
     {
         VideoFileWriter videoFileWriter;
         Bitmap img;
@@ -25,7 +25,7 @@ namespace ScreenRecorder
         //FOR TESTING ONLY
         string selectedfolder = "";
        
-        public Form1()
+        public Screen()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace ScreenRecorder
             else
             {
                  videoFileWriter = new VideoFileWriter();
-                 videoFileWriter.Open(saveFileDir, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 10, VideoCodec.Default, 1000000);
+                videoFileWriter.Open(saveFileDir, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height, 10, VideoCodec.Default, 1000000);
                  timer1.Start();
             }
             
@@ -79,7 +79,7 @@ namespace ScreenRecorder
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            img = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            img = new Bitmap(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
             graphics = Graphics.FromImage(img);
             graphics.CopyFromScreen(0, 0, 0, 0,img.Size);
             pictureBox1.Image = img;
@@ -110,6 +110,16 @@ namespace ScreenRecorder
                 selectedfolder = string.Empty;
 
             MessageBox.Show(selectedfolder.ToString());
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
