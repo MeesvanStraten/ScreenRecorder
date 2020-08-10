@@ -32,3 +32,5 @@ C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\Accord.Video.xml
 C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\Accord.Video.FFMPEG.xml
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.csproj.CoreCompileInputs.cache
 C:\Users\meesv\source\repos\ScreenRecorder\obj\Debug\ScreenRecorder.Screen.resources
+C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\AForge.dll
+C:\Users\meesv\source\repos\ScreenRecorder\bin\Debug\AForge.xml

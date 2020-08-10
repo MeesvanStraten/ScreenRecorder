@@ -1,6 +1,4 @@
-﻿using Accord;
-using Accord.Video.FFMPEG;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,27 +9,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VisioForge.Shared.MediaFoundation.OPM;
+using Xabe.FFmpeg;
+
 
 namespace ScreenRecorder
 {
     public partial class Screen : Form
     {
         Stopwatch stopwatch = new Stopwatch();
-        VideoFileWriter videoFileWriter;
         Bitmap img;
+        Bitmap imgOld;
         Graphics graphics;
         string filename = "";
         string saveFileDir = "";
+        
 
         //FOR TESTING ONLY
         string selectedfolder = "";
-       
+
+
         public Screen()
         {
             InitializeComponent();
 
         }
+
+        void testRec()
+        {
+           
+
+           
+        }
+
+        
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -56,8 +66,6 @@ namespace ScreenRecorder
             {
                 stopwatch.Start();
                 timer1.Start();
-                videoFileWriter = new VideoFileWriter();
-                videoFileWriter.Open(saveFileDir, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height, 1, VideoCodec.Default, 1000000);
             }
             
           
@@ -69,7 +77,6 @@ namespace ScreenRecorder
             timer1.Stop();
             stopwatch.Stop();
             stopwatch.Reset();
-            videoFileWriter.Close();
         }
 
         private void textOutputName_TextChanged(object sender, EventArgs e)
@@ -108,14 +115,38 @@ namespace ScreenRecorder
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            img = new Bitmap(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
-            graphics = Graphics.FromImage(img);
-            graphics.CopyFromScreen(0, 0, 0, 0,img.Size);
-            pictureBox1.Image = img;
+            Newrecordvideo();
+            /* img = new Bitmap(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
+             imgOld = img;
+             graphics = Graphics.FromImage(imgOld);
+             graphics.CopyFromScreen(0, 0, 0, 0,imgOld.Size);
+             pictureBox1.Image = imgOld;
 
-            lblTime.Text = stopwatch.Elapsed.ToString();
+             lblTime.Text = stopwatch.Elapsed.ToString();
 
-            videoFileWriter.WriteVideoFrame(img);
+             videoFileWriter.WriteVideoFrame(imgOld);
+            */
+            //memory fix from here
+
+            
+
+            
+
+        }
+
+        void Newrecordvideo()
+        {
+            using (Bitmap bitmap = new Bitmap(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    //Add screen to bitmap:
+                    g.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
+                }
+                //Save screenshot:
+                //Dispose of bitmap:
+                bitmap.Dispose();
+            }
         }
 
         public bool fileExists(string file)
